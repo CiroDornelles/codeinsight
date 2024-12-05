@@ -8,7 +8,8 @@ const ora = require('ora');
 program
   .name('codeinsight')
   .description('Universal code analysis tool')
-  .version('1.0.0');
+  .version('1.0.0')
+  .helpOption('-h, --help', 'Display help for command');
 
 program
   .command('analyze')
@@ -32,6 +33,13 @@ program
       spinner.fail('Analysis failed');
       console.error(chalk.red(error.message));
     }
+  })
+  .on('--help', () => {
+    console.log('');
+    console.log('Examples:');
+    console.log('  $ codeinsight analyze');
+    console.log('  $ codeinsight analyze -t javascript');
+    console.log('  $ codeinsight analyze -o ./output');
   });
 
 program
@@ -46,8 +54,6 @@ program
       'Exit'
     ];
 
-    
-
     while (true) {
       const { action } = await inquirer.prompt([
         {
@@ -61,6 +67,16 @@ program
       if (action === 'Exit') break;
       await handleAction(action);
     }
+  })
+  .on('--help', () => {
+    console.log('');
+    console.log('Examples:');
+    console.log('  $ codeinsight explore');
   });
 
-program.parse();
+// Show help if no arguments are provided
+if (!process.argv.slice(2).length) {
+  program.outputHelp();
+}
+
+program.parse(process.argv);
