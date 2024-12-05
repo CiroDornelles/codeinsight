@@ -1,0 +1,39 @@
+{
+  "name": "codeinsight",
+  "version": "1.0.0",
+  "description": "A universal code analysis tool that helps you understand any codebase",
+  "main": "lib/index.js",
+  "bin": {
+    "codeinsight": "bin/cli.js"
+  },
+  "scripts": {
+    "start": "node bin/cli.js",
+    "test": "jest",
+    "lint": "eslint .",
+    "build": "tsc"
+  },
+  "keywords": [
+    "code-analysis",
+    "documentation",
+    "static-analysis",
+    "development-tools"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/parser": "^7.23.0",
+    "@babel/traverse": "^7.23.0",
+    "ajv": "^8.12.0",
+    "chalk": "^4.1.2",
+    "commander": "^11.0.0",
+    "glob": "^10.3.10",
+    "inquirer": "^8.2.6",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "eslint": "^8.50.0",
+    "jest": "^29.7.0",
+    "typescript": "^5.2.2"
+  }
+}
