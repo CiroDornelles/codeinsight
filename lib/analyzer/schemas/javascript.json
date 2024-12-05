@@ -1,0 +1,26 @@
+{
+  "name": "JavaScriptSchema",
+  "extends": "BaseProjectSchema",
+  "filePatterns": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+  "analyzers": {
+    "imports": {
+      "patterns": ["import", "require"],
+      "parser": "babel"
+    },
+    "exports": {
+      "patterns": ["export"],
+      "parser": "babel"
+    },
+    "functions": {
+      "patterns": [
+        "function",
+        "const.*=>",
+        "class.*{",
+        "async function"
+      ]
+    },
+    "dependencies": {
+      "files": ["package.json", "package-lock.json", "yarn.lock"]
+    }
+  }
+}
